@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Project } from '../../../context/ProjectContext';
+import ChatInterface from '../ChatInterface';
+import ProjectCollaborators from './ProjectCollaborators';
 
 interface ProjectOverviewProps {
   project: Project;
@@ -33,6 +35,34 @@ export default function ProjectOverview({ project }: ProjectOverviewProps) {
               <p className="mt-1 capitalize">{project.status}</p>
             </div>
           </div>
+          
+          {project.deploymentUrl && (
+            <div className="mt-2 pt-4 border-t border-zinc-200">
+              <h3 className="text-sm font-medium text-zinc-500">Deployment URL</h3>
+              <a 
+                href={project.deploymentUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-1 text-blue-600 hover:underline flex items-center"
+              >
+                {project.deploymentUrl}
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-4 w-4 ml-1" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+                  />
+                </svg>
+              </a>
+            </div>
+          )}
         </div>
       </div>
       
@@ -85,6 +115,22 @@ export default function ProjectOverview({ project }: ProjectOverviewProps) {
                 <p className="text-sm text-zinc-500">Configure project settings</p>
               </div>
             </Link>
+            
+            <Link 
+              to={`/build/${project.id}/settings`}
+              state={{ tab: 'deployment' }}
+              className="flex items-center p-4 border border-zinc-200 rounded-lg hover:bg-zinc-50"
+            >
+              <div className="mr-4 bg-zinc-100 p-2 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-medium">Deploy</h3>
+                <p className="text-sm text-zinc-500">Deploy your project</p>
+              </div>
+            </Link>
           </div>
         </div>
         
@@ -98,6 +144,8 @@ export default function ProjectOverview({ project }: ProjectOverviewProps) {
           </div>
         </div>
       </div>
+      
+      <ProjectCollaborators projectId={project.id} />
     </div>
   );
 }
