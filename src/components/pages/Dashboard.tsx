@@ -240,8 +240,8 @@ export default function Dashboard() {
         </div>
         
         {/* Main content */}
-        <div className="flex-1 overflow-auto bg-zinc-50">
-          <div className="p-4 border-b bg-white">
+        <div className="flex-1 overflow-auto bg-zinc-50 dark:bg-zinc-900">
+          <div className="p-4 border-b bg-white dark:bg-zinc-800 dark:border-zinc-700">
             <Breadcrumbs />
           </div>
           

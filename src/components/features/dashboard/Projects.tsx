@@ -49,10 +49,10 @@ export default function Projects() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 dark:text-white">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold">Your Projects</h1>
-        <button className="bg-zinc-800 text-white px-4 py-2 rounded-md hover:bg-zinc-700 transition-colors">
+        <button className="bg-zinc-800 dark:bg-zinc-700 text-white px-4 py-2 rounded-md hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors">
           New Project
         </button>
       </div>
@@ -60,25 +60,25 @@ export default function Projects() {
       <div className="mb-6">
         <div className="flex space-x-2 border-b border-zinc-200">
           <button 
-            className={`px-4 py-2 ${filter === 'all' ? 'border-b-2 border-zinc-800 font-medium' : 'text-zinc-500'}`}
+            className={`px-4 py-2 ${filter === 'all' ? 'border-b-2 border-zinc-800 dark:border-zinc-200 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}
             onClick={() => setFilter('all')}
           >
             All
           </button>
           <button 
-            className={`px-4 py-2 ${filter === 'active' ? 'border-b-2 border-zinc-800 font-medium' : 'text-zinc-500'}`}
+            className={`px-4 py-2 ${filter === 'active' ? 'border-b-2 border-zinc-800 dark:border-zinc-200 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}
             onClick={() => setFilter('active')}
           >
             Active
           </button>
           <button 
-            className={`px-4 py-2 ${filter === 'draft' ? 'border-b-2 border-zinc-800 font-medium' : 'text-zinc-500'}`}
+            className={`px-4 py-2 ${filter === 'draft' ? 'border-b-2 border-zinc-800 dark:border-zinc-200 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}
             onClick={() => setFilter('draft')}
           >
             Drafts
           </button>
           <button 
-            className={`px-4 py-2 ${filter === 'archived' ? 'border-b-2 border-zinc-800 font-medium' : 'text-zinc-500'}`}
+            className={`px-4 py-2 ${filter === 'archived' ? 'border-b-2 border-zinc-800 dark:border-zinc-200 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}
             onClick={() => setFilter('archived')}
           >
             Archived
@@ -88,18 +88,18 @@ export default function Projects() {
       
       {filteredProjects.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-zinc-500">No projects found.</p>
-          <button className="mt-4 text-zinc-800 underline">Create your first project</button>
+          <p className="text-zinc-500 dark:text-zinc-400">No projects found.</p>
+          <button className="mt-4 text-zinc-800 dark:text-zinc-300 underline">Create your first project</button>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map(project => (
-            <div key={project.id} className="bg-white border border-zinc-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div key={project.id} className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="p-6">
                 <h3 className="text-lg font-medium mb-2">{project.name}</h3>
-                <p className="text-zinc-600 text-sm mb-4">{project.description}</p>
+                <p className="text-zinc-600 dark:text-zinc-300 text-sm mb-4">{project.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-xs text-zinc-500">
+                  <span className="text-xs text-zinc-500 dark:text-zinc-400">
                     Updated {project.lastUpdated.toLocaleDateString()}
                   </span>
                   <span className={`text-xs px-2 py-1 rounded-full ${
@@ -111,13 +111,13 @@ export default function Projects() {
                   </span>
                 </div>
               </div>
-              <div className="bg-zinc-50 px-6 py-3 border-t border-zinc-200 flex justify-between">
-                <button className="text-sm text-zinc-700 hover:text-zinc-900">Edit</button>
+              <div className="bg-zinc-50 dark:bg-zinc-700 px-6 py-3 border-t border-zinc-200 dark:border-zinc-600 flex justify-between">
+                <button className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white">Edit</button>
                 <div className="relative group">
-                  <button className="text-sm text-zinc-700 hover:text-zinc-900">
+                  <button className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white">
                     More
                   </button>
-                  <div className="absolute right-0 bottom-full mb-2 hidden group-hover:block bg-white shadow-lg rounded-md border border-zinc-200 w-36 z-10">
+                  <div className="absolute right-0 bottom-full mb-2 hidden group-hover:block bg-white dark:bg-zinc-800 shadow-lg rounded-md border border-zinc-200 dark:border-zinc-700 w-36 z-10">
                     <div className="py-1">
                       <button 
                         className="block w-full text-left px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-100"
